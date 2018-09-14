@@ -36,13 +36,25 @@ const Tap = (props) => {
           <Button onClick={handlePintSale}>Sell Pint</Button>
           <Button onClick={handleGrowlerSale}>Sell Growler</Button>
           <Button onClick={handleDeleteTap}>Delete</Button>
+          <Modal trigger={<Button>Edit</Button>} basic size='small'>
+            <Header icon='' content='' />
+            <Modal.Content>
+            <EditTap 
+              tap={props.tap}
+              onTapUpdate={props.onTapUpdate}
+            />
+            </Modal.Content>
+            <Modal.Actions>
+              <Button basic color='red' inverted>
+                <Icon name='remove' /> Cancel
+              </Button>
+              <Button color='green' inverted>
+                <Icon name='checkmark' /> Submit
+              </Button>
+            </Modal.Actions>
+          </Modal>
         </Card.Content>
       </Card>
-
-      <EditTap 
-        tap={props.tap}
-        onTapUpdate={props.onTapUpdate}
-      />
     </div>
   );
 }
@@ -57,16 +69,4 @@ Tap.propTypes = {
 
 export default Tap;
 
-{/* <Modal trigger={<Button>Edit</Button>} basic size='small'>
-            <Header icon='' content='' />
-            <Modal.Content>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button basic color='red' inverted>
-                <Icon name='remove' /> Cancel
-              </Button>
-              <Button color='green' inverted>
-                <Icon name='checkmark' /> Submit
-              </Button>
-            </Modal.Actions>
-          </Modal> */}
+{/*  */}
