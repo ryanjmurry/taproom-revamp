@@ -1,9 +1,10 @@
 import React from 'react';
+import Tap from './Tap';
 
 const TapList = () => {
   return (
     <div>
-      Testing
+      <Tap />
     </div>
   );
 }
