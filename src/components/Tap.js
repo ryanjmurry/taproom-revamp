@@ -24,12 +24,10 @@ const Tap = (props) => {
           {style}, {abv}%, ${pintPrice}, ${growlerPrice}, {description}
         </Card.Content>
         <Card.Content extra>
+          <Progress progress='value' value={pintsRemaining} total={124} label='pints remaining' indicating/>
           <Button onClick={handlePintSale}>Sell Pint</Button>
           <Button onClick={handleGrowlerSale}>Sell Growler</Button>
         </Card.Content>
-        {/* <Card.Content extra>
-          <Progress percent={pintsRemaining} indicating />
-        </Card.Content> */}
       </Card>
     </div>
   );
