@@ -33,6 +33,7 @@ class EditTap extends Component {
       id: this.props.tap.id
     }
     this.props.onTapUpdate(updatedTap);
+    this.props.onModalClose();
   }
 
 
@@ -109,7 +110,8 @@ class EditTap extends Component {
 }
 
 EditTap.propTypes = {
-  onTapUpdate: PropTypes.func.isRequired
+  onTapUpdate: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired
 }
 
 export default EditTap;
