@@ -7,7 +7,7 @@ const Nav = () => {
     <div>
       <Menu compact>
         <Menu.Item>
-          <Link to='/'>TapList</Link>
+          <Link to='/taplist'>TapList</Link>
         </Menu.Item>
         <Menu.Item>
           <Link to='newtap'>New Tap</Link>
