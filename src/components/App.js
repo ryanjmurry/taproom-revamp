@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NewTapForm from './NewTapForm';
 import TapList from './TapList';
 import Nav from './Nav';
+import Splash from './Splash';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,13 +21,21 @@ class App extends React.Component {
           pintsRemaining: 124,
           id: 'dlsfjsdlkjflksdjflksdjflk'
         }
-      ]
+      ],
+      siteContentVisible: false
     }
     this.handleAddingNewTap = this.handleAddingNewTap.bind(this);
     this.handlePintSale = this.handlePintSale.bind(this);
     this.handleGrowlerSale = this.handleGrowlerSale.bind(this);
     this.handleRemovingTap = this.handleRemovingTap.bind(this);
     this.handleUpdatingTap = this.handleUpdatingTap.bind(this);
+    this.handleShowSiteContent = this.handleShowSiteContent.bind(this);
+  }
+
+  handleShowSiteContent() {
+    this.setState({
+      siteContentVisible: true
+    })
   }
 
   handleAddingNewTap(newTap) {
@@ -90,26 +99,34 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div >
-        <Nav />
-        <Switch>
-          <Route exact path='/taplist' render={()=>
-            <TapList 
-              tapList={this.state.masterTapList} 
-              onPintSale={this.handlePintSale}
-              onGrowlerSale={this.handleGrowlerSale}
-              onTapRemoval={this.handleRemovingTap} 
-              onTapUpdate={this.handleUpdatingTap}
-            />} 
-          />
-          <Route path='/newtap' render={()=>
-            <NewTapForm 
-              onNewTapCreation={this.handleAddingNewTap}
-            />} 
-          />
-        </Switch>
+    let currentView = null;
+    if (this.state.siteContentVisible) {
+      currentView = <div>
+                      <Nav />
+                      <Switch>
+                      <Route path='/taplist' render={()=>
+                        <TapList 
+                          tapList={this.state.masterTapList} 
+                          onPintSale={this.handlePintSale}
+                          onGrowlerSale={this.handleGrowlerSale}
+                          onTapRemoval={this.handleRemovingTap} 
+                          onTapUpdate={this.handleUpdatingTap}
+                        />} 
+                      />
+                      <Route path='/newtap' render={()=>
+                        <NewTapForm 
+                          onNewTapCreation={this.handleAddingNewTap}
+                        />} 
+                      />
+                    </Switch>
+                    </div>
+    } else {
+      currentView = <Splash onShowSiteContent={this.handleShowSiteContent}/>
+    }
 
+    return (
+      <div>
+        {currentView}
       </div>
     );
   }
