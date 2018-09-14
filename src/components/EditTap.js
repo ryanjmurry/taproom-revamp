@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 
 class EditTap extends Component {
@@ -20,7 +21,18 @@ class EditTap extends Component {
   }
 
   handleSubmit = () => {
-    // const { name, email } = this.state
+    let updatedTap = {
+      name: this.state.name,
+      brewery: this.state.brewery,
+      style: this.state.style,
+      abv: this.state.abv,
+      pintPrice: this.state.pintPrice,
+      growlerPrice: this.state.growlerPrice,
+      description: this.state.description,
+      pintsRemaining: this.props.tap.pintsRemaining,
+      id: this.props.tap.id
+    }
+    this.props.onTapUpdate(updatedTap);
   }
 
 
@@ -28,7 +40,7 @@ class EditTap extends Component {
     const { name, brewery, style, abv, pintPrice, growlerPrice, description } = this.state
     return (
       <div>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
   {/* <Form.Group widths='equal'> */}
       <Form.Input 
         label='Beer Name' 
@@ -96,16 +108,8 @@ class EditTap extends Component {
   }
 }
 
+EditTap.propTypes = {
+  onTapUpdate: PropTypes.func.isRequired
+}
+
 export default EditTap;
-
-
-// import React from 'react';
-
-// const EditTap = () => {
-//   return (
-//     <div>
-    
-//     </div>
-//   );
-// }
-
