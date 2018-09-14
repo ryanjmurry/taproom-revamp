@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
 import { Form } from 'semantic-ui-react';
 import { v4 } from 'uuid';
 
-class NewTapForm extends Component {
+const NewTapForm = (props) => {
 
-  handleFormSubmit = (e) =>{
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     let newTap = {
       name: e.target.name.value,
@@ -19,34 +19,31 @@ class NewTapForm extends Component {
       pintsRemaining: 124,
       id: v4()
     };
-    this.props.onNewTapCreation(newTap);
-    this.props.history.push('/taplist');
+    props.onNewTapCreation(newTap);
+    props.history.push('/taplist');
   }
 
-  render() {
-    return (
-      <div>
-         <Form onSubmit={this.handleFormSubmit.bind(this)}>
-      {/* <Form.Group widths='equal'> */}
-          <Form.Input label='Beer Name' name='name' placeholder='Beer Name' required />
-          <Form.Input label='Brewery' name='brewery' placeholder='Brewery' required />
-          <Form.Input label='Beer Style' name='style' placeholder='Beer Style' required />
-          <Form.Input label='ABV' name='abv' type='number' placeholder='ABV' required />
-          <Form.Input label='Pint Price' name='pint' type='number' placeholder='' required />
-          <Form.Input label='Growler Price' name='growler' type='number' placeholder='' required />
-        {/* </Form.Group> */}
-          <Form.TextArea label='Beer Description' name='description' placeholder='Describe the beer color, flavor, history, etc... ' />
-        <Form.Button color='blue'>Submit Beer</Form.Button>
-      </Form>
-      </div>
-    );
-  }
+  return (
+    <div>
+       <Form onSubmit={handleFormSubmit}>
+    {/* <Form.Group widths='equal'> */}
+        <Form.Input label='Beer Name' name='name' placeholder='Beer Name' required />
+        <Form.Input label='Brewery' name='brewery' placeholder='Brewery' required />
+        <Form.Input label='Beer Style' name='style' placeholder='Beer Style' required />
+        <Form.Input label='ABV' name='abv' type='number' placeholder='ABV' required />
+        <Form.Input label='Pint Price' name='pint' type='number' placeholder='' required />
+        <Form.Input label='Growler Price' name='growler' type='number' placeholder='' required />
+      {/* </Form.Group> */}
+        <Form.TextArea label='Beer Description' name='description' placeholder='Describe the beer color, flavor, history, etc... ' />
+      <Form.Button color='blue'>Submit Beer</Form.Button>
+    </Form>
+    </div>
+  );
 }
 
 NewTapForm.propTypes = {
   onNewTapCreation: PropTypes.func.isRequired
 }
-
 
 export default withRouter(NewTapForm);
 
