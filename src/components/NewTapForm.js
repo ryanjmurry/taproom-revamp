@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 
-const NewKegForm = () => {
+const NewTapForm = () => {
   return (
     <Form>
       <Form.Group widths='equal'>
@@ -19,4 +19,4 @@ const NewKegForm = () => {
   );
 }
 
-export default NewKegForm;
+export default NewTapForm;
