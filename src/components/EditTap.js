@@ -1,0 +1,111 @@
+import React, { Component } from 'react';
+import { Form } from 'semantic-ui-react';
+
+class EditTap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.tap.name,
+      brewery: this.props.tap.brewery,
+      style: this.props.tap.style,
+      abv: this.props.tap.abv,
+      pintPrice: this.props.tap.pintPrice,
+      growlerPrice: this.props.tap.growlerPrice,
+      description: this.props.tap.description,
+    }
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+  }
+
+  handleSubmit = () => {
+    // const { name, email } = this.state
+  }
+
+
+  render() {
+    const { name, brewery, style, abv, pintPrice, growlerPrice, description } = this.state
+    return (
+      <div>
+        <Form>
+  {/* <Form.Group widths='equal'> */}
+      <Form.Input 
+        label='Beer Name' 
+        name='name' 
+        placeholder='Beer Name' 
+        value={name} 
+        onChange={this.handleChange}
+        required 
+      />
+      <Form.Input 
+        label='Brewery' 
+        name='brewery' 
+        placeholder='Brewery' 
+        value={brewery}
+        onChange={this.handleChange} 
+        required 
+      />
+      <Form.Input 
+        label='Beer Style' 
+        name='style' 
+        placeholder='Beer Style' 
+        value={style}
+        onChange={this.handleChange} 
+        required 
+      />
+      <Form.Input 
+      label='ABV' 
+      name='abv' 
+      type='number' 
+      placeholder='ABV' 
+      value={abv}
+      onChange={this.handleChange} 
+      required 
+      />
+      <Form.Input 
+      label='Pint Price' 
+      name='pint' 
+      type='number' 
+      placeholder='' 
+      value={pintPrice}
+      onChange={this.handleChange} 
+      required 
+      />
+      <Form.Input 
+      label='Growler Price' 
+      name='growler' 
+      type='number' 
+      placeholder='' 
+      value={growlerPrice}
+      onChange={this.handleChange} 
+      required 
+      />
+    {/* </Form.Group> */}
+      <Form.TextArea 
+        label='Beer Description' 
+        name='description' 
+        placeholder='Describe the beer color, flavor, history, etc... ' 
+        value={description}
+        onChange={this.handleChange}
+        />
+      <Form.Button color='blue'>Submit Beer</Form.Button>
+    </Form>
+      </div>
+    );
+  }
+}
+
+export default EditTap;
+
+
+// import React from 'react';
+
+// const EditTap = () => {
+//   return (
+//     <div>
+    
+//     </div>
+//   );
+// }
+
