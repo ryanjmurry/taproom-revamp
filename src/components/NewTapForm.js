@@ -17,6 +17,7 @@ class NewTapForm extends Component {
       growlerPrice: e.target.growler.value,
       xlGrowlerPrice: e.target.xlGrowler.value,
       description: e.target.description.value,
+      pintsRemaining: 124,
       id: v4()
     };
     this.props.onNewTapCreation(newTap);
