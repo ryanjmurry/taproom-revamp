@@ -1,9 +1,18 @@
 import React from 'react';
+import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
     <div>
-      NavBar
+      <Menu compact>
+        <Menu.Item>
+          <Link to='/'>TapList</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to='newkeg'>New Keg</Link>
+        </Menu.Item>
+      </Menu>
     </div>
   );
 }
