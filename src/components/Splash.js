@@ -6,7 +6,7 @@ const Splash = (props) => {
   return (
     <div>
       <h1>Just Tap It</h1>
-      <img src={require('./../assets/just-tap-it.png')} />
+      <img src={require('./../assets/just-tap-it.png')} alt='just tap it'/>
       Are you over 21 years of age?
       <Button onClick={props.onShowSiteContent}>
         Yes
