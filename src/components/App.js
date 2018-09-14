@@ -26,7 +26,7 @@ class App extends React.Component {
       <div >
         <Nav />
         <Switch>
-          <Route exact path='/' render={()=><TapList tapList={this.state.masterTapList} />} />
+          <Route exact path='/taplist' render={()=><TapList tapList={this.state.masterTapList} />} />
           <Route path='/newtap' render={()=><NewTapForm onNewTapCreation={this.handleAddingNewTap} />} />
         </Switch>
 
