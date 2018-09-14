@@ -23,6 +23,8 @@ class App extends React.Component {
       ]
     }
     this.handleAddingNewTap = this.handleAddingNewTap.bind(this);
+    this.handlePintSale = this.handlePintSale.bind(this);
+    this.handleGrowlerSale = this.handleGrowlerSale.bind(this);
   }
 
   handleAddingNewTap(newTap) {
@@ -33,12 +35,45 @@ class App extends React.Component {
     })
   }
 
+  handlePintSale(id) {
+    let newMasterTapList = this.state.masterTapList.slice();
+    let tapListLength = newMasterTapList.length;
+    for (let i = 0; i < tapListLength; i++) {
+      if (newMasterTapList[i].id === id) {
+        newMasterTapList[i].pintsRemaining--;
+      }
+    }
+    this.setState({
+      masterTapList: newMasterTapList
+    })
+  }
+
+  handleGrowlerSale(id) {
+    let newMasterTapList = this.state.masterTapList.slice();
+    let tapListLength = newMasterTapList.length;
+    for (let i = 0; i < tapListLength; i++) {
+      if (newMasterTapList[i].id === id) {
+        newMasterTapList[i].pintsRemaining -= 4;
+      }
+    }
+    this.setState({
+      masterTapList: newMasterTapList
+    })
+  }
+
   render() {
+    console.log(this.state.masterTapList.length)
     return (
       <div >
         <Nav />
         <Switch>
-          <Route exact path='/taplist' render={()=><TapList tapList={this.state.masterTapList} />} />
+          <Route exact path='/taplist' render={()=>
+            <TapList 
+              tapList={this.state.masterTapList} 
+              onPintSale={this.handlePintSale}
+              onGrowlerSale={this.handleGrowlerSale}
+            />} 
+          />
           <Route path='/newtap' render={()=><NewTapForm onNewTapCreation={this.handleAddingNewTap} />} />
         </Switch>
 
