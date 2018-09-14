@@ -6,11 +6,19 @@ const Tap = (props) => {
  const { name, brewery, style, abv, pintPrice, growlerPrice, pintsRemaining, description, id } = props.tap;
 
  const handlePintSale = () => {
-   props.onPintSale(id)
+   props.onPintSale(id);
  }
 
  const handleGrowlerSale = () => {
    props.onGrowlerSale(id)
+ }
+
+ const handleEditTap = () => {
+
+ }
+
+ const handleDeleteTap = () => {
+  props.onTapRemoval(id);
  }
 
 
@@ -27,6 +35,8 @@ const Tap = (props) => {
           <Progress progress='value' value={pintsRemaining} total={124} label='pints remaining' indicating/>
           <Button onClick={handlePintSale}>Sell Pint</Button>
           <Button onClick={handleGrowlerSale}>Sell Growler</Button>
+          <Button onClick={handleEditTap}>Edit</Button>
+          <Button onClick={handleDeleteTap}>Delete</Button>
         </Card.Content>
       </Card>
     </div>
@@ -36,7 +46,8 @@ const Tap = (props) => {
 Tap.propTypes = {
   tap: PropTypes.object.isRequired,
   onPintSale: PropTypes.func.isRequired,
-  onGrowlerSale: PropTypes.func.isRequired
+  onGrowlerSale: PropTypes.func.isRequired,
+  onTapRemoval: PropTypes.func.isRequired
 }
 
 export default Tap;
