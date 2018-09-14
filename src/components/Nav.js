@@ -10,7 +10,7 @@ const Nav = () => {
           <Link to='/'>TapList</Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to='newkeg'>New Keg</Link>
+          <Link to='newtap'>New Tap</Link>
         </Menu.Item>
       </Menu>
     </div>
