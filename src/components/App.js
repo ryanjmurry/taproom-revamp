@@ -26,6 +26,7 @@ class App extends React.Component {
     this.handlePintSale = this.handlePintSale.bind(this);
     this.handleGrowlerSale = this.handleGrowlerSale.bind(this);
     this.handleRemovingTap = this.handleRemovingTap.bind(this);
+    this.handleUpdatingTap = this.handleUpdatingTap.bind(this);
   }
 
   handleAddingNewTap(newTap) {
@@ -75,6 +76,19 @@ class App extends React.Component {
     })
   }
 
+  handleUpdatingTap(updatedTap) {
+    let newMasterTapList = this.state.masterTapList.slice();
+    let tapListLength = newMasterTapList.length;
+    for (let i = 0; i < tapListLength; i++) {
+      if (newMasterTapList[i].id === updatedTap.id) {
+        newMasterTapList[i] = updatedTap;
+      }
+      this.setState({
+        masterTapList: newMasterTapList
+      })
+    }
+  }
+
   render() {
     return (
       <div >
@@ -86,6 +100,7 @@ class App extends React.Component {
               onPintSale={this.handlePintSale}
               onGrowlerSale={this.handleGrowlerSale}
               onTapRemoval={this.handleRemovingTap} 
+              onTapUpdate={this.handleUpdatingTap}
             />} 
           />
           <Route path='/newtap' render={()=>
