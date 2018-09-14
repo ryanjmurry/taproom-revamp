@@ -82,18 +82,3 @@ Tap.propTypes = {
 }
 
 export default Tap;
-
-{/* <Header icon='' content='' />
-
-<EditTap 
-  tap={this.props.tap}
-  onTapUpdate={this.props.onTapUpdate}
-/>
-<Modal.Actions>
-  <Button basic color='red' inverted>
-    <Icon name='remove' /> Cancel
-  </Button>
-  <Button color='green' inverted>
-    <Icon name='checkmark' /> Submit
-  </Button>
-</Modal.Actions> */}
