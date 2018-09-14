@@ -25,6 +25,7 @@ class App extends React.Component {
     this.handleAddingNewTap = this.handleAddingNewTap.bind(this);
     this.handlePintSale = this.handlePintSale.bind(this);
     this.handleGrowlerSale = this.handleGrowlerSale.bind(this);
+    this.handleRemovingTap = this.handleRemovingTap.bind(this);
   }
 
   handleAddingNewTap(newTap) {
@@ -61,8 +62,20 @@ class App extends React.Component {
     })
   }
 
+  handleRemovingTap(id) {
+    let newMasterTapList = this.state.masterTapList.slice();
+    let tapListLength = newMasterTapList.length;
+    for (let i = 0; i < tapListLength; i++) {
+      if (newMasterTapList[i].id === id) {
+        newMasterTapList.splice(i, 1);
+      }
+    }
+    this.setState({
+      masterTapList: newMasterTapList
+    })
+  }
+
   render() {
-    console.log(this.state.masterTapList.length)
     return (
       <div >
         <Nav />
@@ -72,9 +85,14 @@ class App extends React.Component {
               tapList={this.state.masterTapList} 
               onPintSale={this.handlePintSale}
               onGrowlerSale={this.handleGrowlerSale}
+              onTapRemoval={this.handleRemovingTap} 
             />} 
           />
-          <Route path='/newtap' render={()=><NewTapForm onNewTapCreation={this.handleAddingNewTap} />} />
+          <Route path='/newtap' render={()=>
+            <NewTapForm 
+              onNewTapCreation={this.handleAddingNewTap}
+            />} 
+          />
         </Switch>
 
       </div>
