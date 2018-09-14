@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Progress } from 'semantic-ui-react';
+import { Card, Progress, Button } from 'semantic-ui-react';
 
 const Tap = (props) => {
- const { name, brewery, style, abv, pintPrice, growlerPrice, pintsRemaining, description } = props.tap;
+ const { name, brewery, style, abv, pintPrice, growlerPrice, pintsRemaining, description, id } = props.tap;
+
+ const handlePintSale = () => {
+   props.onPintSale(id)
+ }
+
+ const handleGrowlerSale = () => {
+   props.onGrowlerSale(id)
+ }
+
+
   return (
     <div>
       <Card>
@@ -12,6 +22,10 @@ const Tap = (props) => {
         </Card.Content>
         <Card.Content>
           {style}, {abv}%, ${pintPrice}, ${growlerPrice}, {description}
+        </Card.Content>
+        <Card.Content extra>
+          <Button onClick={handlePintSale}>Sell Pint</Button>
+          <Button onClick={handleGrowlerSale}>Sell Growler</Button>
         </Card.Content>
         {/* <Card.Content extra>
           <Progress percent={pintsRemaining} indicating />
@@ -22,7 +36,9 @@ const Tap = (props) => {
 }
 
 Tap.propTypes = {
-  tap: PropTypes.object
+  tap: PropTypes.object.isRequired,
+  onPintSale: PropTypes.func.isRequired,
+  onGrowlerSale: PropTypes.func.isRequired
 }
 
 export default Tap;
