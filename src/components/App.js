@@ -8,7 +8,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterTapList: []
+      masterTapList: [
+        {
+          name: 'Lagunitas IPA',
+          brewery: 'Lagunitas',
+          style: 'Indian Pale Ale',
+          abv: '5.0',
+          pintPrice: 6,
+          growlerPrice: 16,
+          description: 'Tasty as shit',
+          pintsRemaining: 124,
+          id: 'dlsfjsdlkjflksdjflksdjflk'
+        }
+      ]
     }
     this.handleAddingNewTap = this.handleAddingNewTap.bind(this);
   }
@@ -36,3 +48,4 @@ class App extends React.Component {
 }
 
 export default App;
+
