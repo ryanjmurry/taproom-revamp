@@ -13,6 +13,7 @@ const TapList = (props) => {
           onPintSale={props.onPintSale}
           onGrowlerSale={props.onGrowlerSale}
           onTapRemoval={props.onTapRemoval}
+          onTapUpdate={props.onTapUpdate}
           key={tap.id}
         />
       )}
@@ -25,7 +26,8 @@ TapList.propTypes = {
   tapList: PropTypes.array.isRequired,
   onPintSale: PropTypes.func.isRequired,
   onGrowlerSale: PropTypes.func.isRequired,
-  onTapRemoval: PropTypes.func.isRequired
+  onTapRemoval: PropTypes.func.isRequired,
+  onTapUpdate: PropTypes.func.isRequired
 }
 
 export default TapList;
