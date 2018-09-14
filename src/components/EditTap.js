@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Form, Icon } from 'semantic-ui-react';
 
 class EditTap extends Component {
   constructor(props) {
@@ -78,7 +78,7 @@ class EditTap extends Component {
       />
       <Form.Input 
       label='Pint Price' 
-      name='pint' 
+      name='pintPrice' 
       type='number' 
       placeholder='' 
       value={pintPrice}
@@ -87,7 +87,7 @@ class EditTap extends Component {
       />
       <Form.Input 
       label='Growler Price' 
-      name='growler' 
+      name='growlerPrice' 
       type='number' 
       placeholder='' 
       value={growlerPrice}
@@ -102,7 +102,9 @@ class EditTap extends Component {
         value={description}
         onChange={this.handleChange}
         />
-      <Form.Button color='blue'>Submit Beer</Form.Button>
+      <Form.Button color='green' inverted>
+        <Icon name='checkmark' /> Submit
+      </Form.Button>
     </Form>
       </div>
     );
