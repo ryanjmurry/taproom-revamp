@@ -15,7 +15,6 @@ class NewTapForm extends Component {
       abv: e.target.abv.value,
       pintPrice: e.target.pint.value,
       growlerPrice: e.target.growler.value,
-      xlGrowlerPrice: e.target.xlGrowler.value,
       description: e.target.description.value,
       pintsRemaining: 124,
       id: v4()
@@ -35,7 +34,6 @@ class NewTapForm extends Component {
           <Form.Input label='ABV' name='abv' type='number' placeholder='ABV' required />
           <Form.Input label='Pint Price' name='pint' type='number' placeholder='' required />
           <Form.Input label='Growler Price' name='growler' type='number' placeholder='' required />
-          <Form.Input label='XL Growler Price' name='xlGrowler' type='number' placeholder='' required />
         {/* </Form.Group> */}
           <Form.TextArea label='Beer Description' name='description' placeholder='Describe the beer color, flavor, history, etc... ' />
         <Form.Button color='blue'>Submit Beer</Form.Button>
