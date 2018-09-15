@@ -1,9 +1,10 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NewTapForm from './NewTapForm';
 import TapList from './TapList';
 import Nav from './Nav';
 import Splash from './Splash';
+import Admin from './Admin';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class App extends React.Component {
     this.setState({
       siteContentVisible: true
     })
+    this.props.history.push('/taplist');
   }
 
   handleAddingNewTap(newTap) {
@@ -104,8 +106,9 @@ class App extends React.Component {
       currentView = <div>
                       <Nav />
                       <Switch>
-                      <Route path='/taplist' render={()=>
-                        <TapList 
+                      <Route 
+                        path='/taplist' 
+                        render={()=><TapList 
                           tapList={this.state.masterTapList} 
                           onPintSale={this.handlePintSale}
                           onGrowlerSale={this.handleGrowlerSale}
@@ -113,10 +116,22 @@ class App extends React.Component {
                           onTapUpdate={this.handleUpdatingTap}
                         />} 
                       />
-                      <Route path='/newtap' render={()=>
-                        <NewTapForm 
-                          onNewTapCreation={this.handleAddingNewTap}
+                      <Route 
+                        path='/newtap' 
+                        render={()=><NewTapForm 
+                          onNewTapCreation={this.handleAddingNewTap} 
                         />} 
+                      />
+                      <Route 
+                        path='/admin' 
+                        render={()=><Admin
+                          tapList={this.state.masterTapList} 
+                          onPintSale={this.handlePintSale}
+                          onGrowlerSale={this.handleGrowlerSale}
+                          onTapRemoval={this.handleRemovingTap} 
+                          onTapUpdate={this.handleUpdatingTap} 
+                          currentRouterPath={this.props.location.pathname}
+                        />}
                       />
                     </Switch>
                     </div>
@@ -132,5 +147,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
 
